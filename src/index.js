@@ -1,8 +1,17 @@
 module.exports = function getPositiveKeysOfBoolset(boolset) {
-    const result = [];
-    for (let index = 1, iterations = boolset.length; index < iterations; index += 2) {
-        if (index % 2 === 1 && boolset[index]) {
-            result.push(boolset[index - 1]);
+    let result = [];
+    for (
+        let index = 0,
+            iterations = boolset.length,
+            key = boolset[index + 1],
+            value = boolset[index];
+        index < iterations;
+        index += 2,
+        key = boolset[index + 1],
+        value = boolset[index]
+    ) {
+        if (key) {
+            result.push(value);
         }
     }
     return result;
